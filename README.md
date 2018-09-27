@@ -74,4 +74,13 @@ Once the number of threads that called await() equals numberOfThreads, the barri
 - A CountDownLatch can be used only once in a program(until it’s count reaches 0).
 - A CyclicBarrier can be used again and again once all the threads in a barriers is released.
 
+### Semaphore in Java
+A **semaphore controls access to a shared resource through the use of a counter**. If the counter is greater than zero, then access is allowed. If it is zero, then access is denied. What the counter is counting are permits that allow access to the shared resource. Thus, to access the resource, a thread must be granted a permit from the semaphore.
+
+#### Working of semaphore
+In general, to use a semaphore, the thread that wants access to the shared resource tries to acquire a permit.
+- If the semaphore’s count is greater than zero, then the thread acquires a permit, which causes the semaphore’s count to be decremented.
+- Otherwise, the thread will be blocked until a permit can be acquired.
+- When the thread no longer needs an access to the shared resource, it releases the permit, which causes the semaphore’s count to be incremented.
+- If there is another thread waiting for a permit, then that thread will acquire a permit at that time.
 
