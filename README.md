@@ -20,6 +20,6 @@ When we create an object of CountDownLatch, we specify the number of threads it 
 ### CyclicBarrier in Java
 The java.util.concurrent.CyclicBarrier class is a synchronization mechanism that can synchronize threads progressing through some algorithm. In other words, it is a barrier that all threads must wait at, until all threads reach it, before any of the threads can continue. 
 
-
+![cyclic-barrier](https://user-images.githubusercontent.com/36996525/46130327-a8d04e80-c256-11e8-831f-e85e06492149.png)
 
 
