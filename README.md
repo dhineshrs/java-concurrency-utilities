@@ -45,6 +45,11 @@ We can also specify a timeout for the waiting thread. When the timeout has passe
 **CyclicBarrier is used to make threads wait for each other.** It is **used when** *different threads process a part of computation and when all threads have completed the execution,* **the result needs to be combined in the parent thread**. In other words, a CyclicBarrier is used when **multiple thread carry out different sub tasks and the output of these sub tasks need to be combined to form the final output**. After completing its execution, threads call await() method and wait for other threads to reach the barrier. Once all the threads have reached, the barriers then give the way for threads to proceed.
 ![cyclicbarrier](https://user-images.githubusercontent.com/36996525/46131166-9bb45f00-c258-11e8-89de-0e98d4e07c16.png)
 
+Once the number of threads that called await() equals numberOfThreads, the barrier then gives a way for the waiting threads. The CyclicBarrier can also be initialized with some action that is performed once all the threads have reached the barrier. This action can combine/utilize the result of computation of individual thread waiting in the barrier.
+ <br /> Runnable action = ... 
+ <br /> //action to be performed when all threads reach the barrier;
+ <br /> CyclicBarrier newBarrier = new CyclicBarrier(numberOfThreads, action);
+
 **Difference between a CyclicBarrier and a CountDownLatch**
 - A CountDownLatch can be used only once in a program(until it’s count reaches 0).
 - A CyclicBarrier can be used again and again once all the threads in a barriers is released.
