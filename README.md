@@ -50,6 +50,28 @@ Once the number of threads that called await() equals numberOfThreads, the barri
  <br /> //action to be performed when all threads reach the barrier;
  <br /> CyclicBarrier newBarrier = new CyclicBarrier(numberOfThreads, action);
 
+**Important Methods of CyclicBarrier:**
+ <br /> **2. getParties**: Returns the number of parties required to trip this barrier.
+  <br />            Syntax:  public int **getParties()**
+  <br />            Returns: the number of parties required to trip this barrier
+  
+ <br /> **2. reset**: Resets the barrier to its initial state.
+  <br />            Syntax:  public void **reset()**
+  <br />            Returns: void but resets the barrier to its initial state. If any parties are currently waiting at the barrier, they   <br />                     will return with a BrokenBarrierException.
+
+ <br /> **3. isBroken**: Queries if this barrier is in a broken state.
+  <br />            Syntax:  public boolean **isBroken()**
+
+ <br /> **4. getNumberWaiting**:  Returns the number of parties currently waiting at the barrier.
+  <br />            Syntax:  public int **getNumberWaiting()**
+  <br />            Returns: the number of parties currently blocked in await().
+  
+   <br /> **5. await**:  Waits until all parties have invoked await on this barrier.
+  <br />            Syntax:  public int **await() throws InterruptedException, BrokenBarrierException**
+  <br />            Returns: the arrival index of the current thread, where index getParties() – 1 indicates the first to arrive and   <br />                       zero indicates the last to arrive.
+
 **Difference between a CyclicBarrier and a CountDownLatch**
 - A CountDownLatch can be used only once in a program(until it’s count reaches 0).
 - A CyclicBarrier can be used again and again once all the threads in a barriers is released.
+
+
