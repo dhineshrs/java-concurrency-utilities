@@ -16,3 +16,10 @@ When we create an object of CountDownLatch, we specify the number of threads it 
 - **Use CountDownLatch** when one thread (like the main thread) requires to wait for one or more threads to complete, before it can continue processing.
 - A **classical example** of using CountDownLatch in Java is a server side core Java application which uses services architecture, where *multiple services are provided by multiple threads and the application cannot start processing until all services have started successfully*.
 - One **disadvantage of CountDownLatch** is that **its not reusable once count reaches to zero** you can not use CountDownLatch any more, but don't worry Java concurrency API has another concurrent utility called **CyclicBarrier** for such requirements.
+
+### CyclicBarrier in Java
+The java.util.concurrent.CyclicBarrier class is a synchronization mechanism that can synchronize threads progressing through some algorithm. In other words, it is a barrier that all threads must wait at, until all threads reach it, before any of the threads can continue. 
+
+
+
+
