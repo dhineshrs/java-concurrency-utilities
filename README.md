@@ -20,6 +20,29 @@ When we create an object of CountDownLatch, we specify the number of threads it 
 ### CyclicBarrier in Java
 The java.util.concurrent.CyclicBarrier class is a synchronization mechanism that can synchronize threads progressing through some algorithm. In other words, it is a barrier that all threads must wait at, until all threads reach it, before any of the threads can continue. 
 
-![cyclic-barrier](https://user-images.githubusercontent.com/36996525/46130327-a8d04e80-c256-11e8-831f-e85e06492149.png)
 
+Two threads waiting for each other at CyclicBarriers.
+
+The threads wait for each other by calling the await() method on the CyclicBarrier. Once N threads are waiting at the CyclicBarrier, all threads are released and can continue running.
+
+**Creating a CyclicBarrier** When you create a CyclicBarrier you specify how many threads are to wait at it, before releasing them. Here is how you create a CyclicBarrier:
+**CyclicBarrier barrier = new CyclicBarrier(2);**
+
+**Waiting at a CyclicBarrier**
+Here is how a thread waits at a CyclicBarrier:
+**barrier.await();**
+
+We can also specify a timeout for the waiting thread. When the timeout has passed the thread is also released, even if not all N threads are waiting at the CyclicBarrier. Here is how you specify a timeout:
+**barrier.await(10, TimeUnit.SECONDS);**
+
+**The waiting threads waits at the CyclicBarrier until either:**
+- The last thread arrives (calls await() )
+- The thread is interrupted by another thread (another thread calls its interrupt() method)
+- Another waiting thread is interrupted
+- Another waiting thread times out while waiting at the CyclicBarrier
+- The CyclicBarrier.reset() method is called by some external thread.
+
+**CyclicBarrier is used to make threads wait for each other.** It is **used when** *different threads process a part of computation and when all threads have completed the execution,* **the result needs to be combined in the parent thread**. In other words, a CyclicBarrier is used when **multiple thread carry out different sub tasks and the output of these sub tasks need to be combined to form the final output**. After completing its execution, threads call await() method and wait for other threads to reach the barrier. Once all the threads have reached, the barriers then give the way for threads to proceed.
+
+Working of CyclicBarrier:
 
